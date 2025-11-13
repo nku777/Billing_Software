@@ -1,0 +1,55 @@
+/* style.css - clean modern styles for billing UI */
+
+:root{
+  --max-width: 980px;
+  --card-padding: 18px;
+  --brand: #0d6efd;
+}
+
+*{box-sizing:border-box}
+body{
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background:#f3f6fb;
+  margin:0;
+  padding:20px;
+  color:#222;
+}
+
+.container{ max-width:var(--max-width); }
+.card{ border-radius:8px; }
+.card-body{ padding:var(--card-padding); }
+
+#controls h5{ margin-bottom:8px }
+
+/* Form controls inside the item add area */
+#itemQty{ max-width:110px; }
+#itemPrice{ max-width:140px; }
+
+/* Table column widths: keep in CSS rather than inline styles */
+#billTable th:nth-child(2), #billTable td:nth-child(2){ width:90px }
+#billTable th:nth-child(3), #billTable td:nth-child(3){ width:130px }
+#billTable th:nth-child(4), #billTable td:nth-child(4){ width:130px }
+#billTable th:nth-child(5), #billTable td:nth-child(5){ width:90px }
+
+/* Make the small inputs inside table compact */
+#billTable input[type="number"]{ width:100%; }
+
+.table-responsive{ margin-bottom:12px }
+
+.me-4.text-end{ min-width:260px }
+
+/* Buttons area */
+.d-flex.gap-2{ gap:.5rem }
+
+/* print rules: hide interactive controls when printing */
+@media print{
+  #controls, #addItemBtn, #clearBtn, #savePdfBtn, #printBtn, .btn{ display:none !important }
+  body{ background: #fff }
+  .card{ box-shadow:none; border:none }
+}
+
+/* small responsive tweaks */
+@media (max-width:600px){
+  .me-4.text-end{ min-width:unset }
+  #itemQty, #itemPrice{ max-width:100px }
+}
