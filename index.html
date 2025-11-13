@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simple billing Software</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container my-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <img src="https://img.icons8.com/?size=100&id=x7ZseMZCHjKM&format=png&color=000000">
+                    <h3 class="m-0">QuickBill</h3>
+                    <small id="currentDate" class="text-muted"></small>
+                </div>
+
+                <div id="controls" class="row g-3">
+                    <div class="col-md-6">
+                        <h5>Customer</h5>
+                        <input id="customerName" class="form-control mb-2" placeholder="Customer name">
+                        <input id="customerContact" class="form-control" placeholder="Contact (optional)">
+                    </div>
+
+                    <div class="col-md-6">
+                        <h5>Add Item</h5>
+                        <div class="input-group mb-2">
+                            <input id="itemName" class="form-control" placeholder="Item name">
+                            <input id="itemQty" type="number" min="1" value="1" class="form-control" style="max-width:110px;" placeholder="Qty">
+                            <input id="itemPrice" type="number" min="0" step="0.01" class="form-control" style="max-width:140px;" placeholder="Price">
+                            <button id="addItemBtn" class="btn btn-primary" type="button">Add</button>
+                        </div>
+                        <div class="small text-muted">Tip: Press Enter in the price field to add.</div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div id="billArea">
+                    <div class="table-responsive">
+                        <table id="billTable" class="table table-bordered table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="w-50">Item</th>
+                                    <th style="width:90px">Qty</th>
+                                    <th style="width:130px">Price</th>
+                                    <th style="width:130px">Total</th>
+                                    <th style="width:90px">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <div class="me-4 text-end">
+                            <div>Subtotal: <strong>₹<span id="subTotal">0.00</span></strong></div>
+                            <div class="mt-1">Tax (%): <input id="taxPercent" type="number" min="0" value="0" style="width:80px;" class="form-control d-inline-block ms-2"></div>
+                            <div class="mt-1">Discount (%): <input id="discountPercent" type="number" min="0" value="0" style="width:80px;" class="form-control d-inline-block ms-2"></div>
+                            <div class="mt-2 fs-5">Grand Total: <strong>₹<span id="grandTotal">0.00</span></strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-3 d-flex gap-2 justify-content-end">
+                    <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                    <button id="printBtn" class="btn btn-outline-primary">Print</button>
+                    <button id="savePdfBtn" class="btn btn-success">Save PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- app logic -->
+    <script src="app.js"></script>
+</body>
+
+</html>
